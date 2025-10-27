@@ -14,7 +14,7 @@
     </div>
     <nav>
       <ul>
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="../core/index.html">Home</a></li>
         <li><a href="../services/service.html">Services</a></li>
         <li><a href="../team/team.html">Our Team</a></li>
         <li><a href="../testimonials/testimonials.html">Testimonials</a></li>
@@ -192,7 +192,22 @@
         navbar.classList.remove('scrolled');
       }
     });
+
+     const navLinks = document.querySelectorAll('nav a');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  const currentPage = window.location.pathname.split('/').pop();
+  navLinks.forEach(link => {
+    if (link.getAttribute('href').includes(currentPage)) {
+      link.classList.add('active');
+    }
+  });
   </script>
 </body>
 </html>
-
